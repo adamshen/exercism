@@ -1,9 +1,16 @@
 class Raindrops
+  CONVERT_RULE = {
+      'Pling' => 3,
+      'Plang' => 5,
+      'Plong' => 7
+  }
   def self.convert(num)
     result = ''
-    result = result + 'Pling' if num % 3 == 0
-    result = result + 'Plang' if num % 5 == 0
-    result = result + 'Plong' if num % 7 == 0
+
+    CONVERT_RULE.each_pair do |key, value|
+      result = result + key if num % value == 0
+    end
+
     result == '' ? num.to_s : result
   end
 end
